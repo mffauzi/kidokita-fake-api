@@ -20,34 +20,50 @@
 
       "screen_time_limit_minutes": 120,
 
-      "bedtime": {
-        "enabled": true,
-        "start": "20:00",
-        "end": "06:00"
-      },
+      "bedtime_enabled": true,
+      "bedtime_start": "20:00",
+      "bedtime_end": "06:00",
 
-      "allowed_apps": [
-        {
-          "package_name": "com.google.android.apps.youtube.kids",
-          "name": "YouTube Kids"
-        }
-      ],
+      "web_filter_enabled": true,
+      "web_filter_mode": "whitelist",
 
-      "blocked_apps": [],
+      "location_tracking_enabled": true,
+      "location_tracking_interval_minutes": 15
+    }
+  ],
 
-      "web_filter": {
-        "enabled": true,
-        "mode": "whitelist",
-        "domains": [
-          "youtube.com",
-          "kids.youtube.com"
-        ]
-      },
+  "allowed_apps": [
+    {
+      "id": "allow_001",
+      "policy_id": "policy_001",
+      "package_name": "com.google.android.apps.youtube.kids",
+      "app_name": "YouTube Kids"
+    },
+    {
+      "id": "allow_002",
+      "policy_id": "policy_001",
+      "package_name": "com.duolingo",
+      "app_name": "Duolingo"
+    }
+  ],
 
-      "location_tracking": {
-        "enabled": true,
-        "interval_minutes": 15
-      }
+  "blocked_apps": [],
+
+  "web_filter_domains": [
+    {
+      "id": "domain_001",
+      "policy_id": "policy_001",
+      "domain": "youtube.com"
+    },
+    {
+      "id": "domain_002",
+      "policy_id": "policy_001",
+      "domain": "kids.youtube.com"
+    },
+    {
+      "id": "domain_003",
+      "policy_id": "policy_001",
+      "domain": "duolingo.com"
     }
   ],
 
@@ -57,12 +73,24 @@
       "device_id": "device_001",
       "type": "extend_time",
       "status": "pending",
-
-      "payload": {
-        "minutes": 30
-      },
-
+      "minutes": 30,
       "created_at": "2026-06-09T08:00:00Z"
+    },
+    {
+      "id": "cmd_002",
+      "device_id": "device_001",
+      "type": "block_app",
+      "status": "completed",
+      "package_name": "com.roblox.client",
+      "created_at": "2026-06-08T10:00:00Z"
+    },
+    {
+      "id": "cmd_003",
+      "device_id": "device_001",
+      "type": "update_policy",
+      "status": "completed",
+      "policy_version": 3,
+      "created_at": "2026-06-08T09:00:00Z"
     }
   ],
 
@@ -72,13 +100,18 @@
       "device_id": "device_001",
       "type": "more_screen_time",
       "status": "pending",
-
-      "payload": {
-        "requested_minutes": 30,
-        "reason": "Want to finish lesson"
-      },
-
+      "requested_minutes": 30,
+      "reason": "Want to finish lesson",
       "created_at": "2026-06-09T09:00:00Z"
+    },
+    {
+      "id": "req_002",
+      "device_id": "device_001",
+      "type": "install_app",
+      "status": "approved",
+      "package_name": "com.roblox.client",
+      "app_name": "Roblox",
+      "created_at": "2026-06-08T15:00:00Z"
     }
   ],
 
@@ -88,19 +121,34 @@
       "device_id": "device_001",
       "type": "screen_time_used",
       "synced": true,
-
-      "payload": {
-        "app": "YouTube Kids",
-        "minutes": 45
-      },
-
+      "app_name": "YouTube Kids",
+      "minutes": 45,
       "created_at": "2026-06-09T07:00:00Z"
+    },
+    {
+      "id": "evt_002",
+      "device_id": "device_001",
+      "type": "app_installed",
+      "synced": true,
+      "package_name": "com.roblox.client",
+      "app_name": "Roblox",
+      "created_at": "2026-06-09T08:00:00Z"
+    },
+    {
+      "id": "evt_003",
+      "device_id": "device_001",
+      "type": "location_changed",
+      "synced": false,
+      "latitude": -6.2088,
+      "longitude": 106.8456,
+      "created_at": "2026-06-09T08:30:00Z"
     }
   ],
 
   "device_status": [
     {
-      "id": "device_001",
+      "id": "status_001",
+      "device_id": "device_001",
 
       "battery_level": 85,
       "is_charging": false,
@@ -111,10 +159,8 @@
 
       "today_screen_time_minutes": 65,
 
-      "last_location": {
-        "latitude": -6.2088,
-        "longitude": 106.8456
-      },
+      "latitude": -6.2088,
+      "longitude": 106.8456,
 
       "updated_at": "2026-06-09T09:00:00Z"
     }
@@ -124,23 +170,31 @@
     {
       "id": "app_001",
       "device_id": "device_001",
-
       "package_name": "com.google.android.apps.youtube.kids",
-
-      "name": "YouTube Kids",
-
+      "app_name": "YouTube Kids",
       "category": "education"
+    },
+    {
+      "id": "app_002",
+      "device_id": "device_001",
+      "package_name": "com.duolingo",
+      "app_name": "Duolingo",
+      "category": "education"
+    },
+    {
+      "id": "app_003",
+      "device_id": "device_001",
+      "package_name": "com.roblox.client",
+      "app_name": "Roblox",
+      "category": "game"
     }
   ],
 
   "pairings": [
     {
       "id": "pair_001",
-
       "code": "KIDO-1234",
-
       "device_id": "device_001",
-
       "expires_at": "2026-06-10T00:00:00Z"
     }
   ]
