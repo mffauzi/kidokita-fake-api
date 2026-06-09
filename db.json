@@ -1,31 +1,147 @@
 {
-  "posts": [
+  "devices": [
     {
-      "id": 1,
-      "title": "Post 1"
-    },
-    {
-      "id": 2,
-      "title": "Post 2"
-    },
-    {
-      "id": 3,
-      "title": "Post 3"
+      "id": "device_001",
+      "pairing_code": "KIDO-1234",
+      "child_name": "Budi",
+      "age": 6,
+      "status": "active",
+      "policy_version": 3,
+      "last_seen": "2026-06-09T09:00:00Z",
+      "created_at": "2026-06-01T00:00:00Z"
     }
   ],
-  "comments": [
+
+  "policies": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    },
-    {
-      "id": 2,
-      "body": "some comment",
-      "postId": 1
+      "id": "policy_001",
+      "device_id": "device_001",
+      "version": 3,
+
+      "screen_time_limit_minutes": 120,
+
+      "bedtime": {
+        "enabled": true,
+        "start": "20:00",
+        "end": "06:00"
+      },
+
+      "allowed_apps": [
+        {
+          "package_name": "com.google.android.apps.youtube.kids",
+          "name": "YouTube Kids"
+        }
+      ],
+
+      "blocked_apps": [],
+
+      "web_filter": {
+        "enabled": true,
+        "mode": "whitelist",
+        "domains": [
+          "youtube.com",
+          "kids.youtube.com"
+        ]
+      },
+
+      "location_tracking": {
+        "enabled": true,
+        "interval_minutes": 15
+      }
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+
+  "commands": [
+    {
+      "id": "cmd_001",
+      "device_id": "device_001",
+      "type": "extend_time",
+      "status": "pending",
+
+      "payload": {
+        "minutes": 30
+      },
+
+      "created_at": "2026-06-09T08:00:00Z"
+    }
+  ],
+
+  "requests": [
+    {
+      "id": "req_001",
+      "device_id": "device_001",
+      "type": "more_screen_time",
+      "status": "pending",
+
+      "payload": {
+        "requested_minutes": 30,
+        "reason": "Want to finish lesson"
+      },
+
+      "created_at": "2026-06-09T09:00:00Z"
+    }
+  ],
+
+  "events": [
+    {
+      "id": "evt_001",
+      "device_id": "device_001",
+      "type": "screen_time_used",
+      "synced": true,
+
+      "payload": {
+        "app": "YouTube Kids",
+        "minutes": 45
+      },
+
+      "created_at": "2026-06-09T07:00:00Z"
+    }
+  ],
+
+  "device_status": [
+    {
+      "id": "device_001",
+
+      "battery_level": 85,
+      "is_charging": false,
+
+      "network_status": "online",
+
+      "current_app": "com.google.android.apps.youtube.kids",
+
+      "today_screen_time_minutes": 65,
+
+      "last_location": {
+        "latitude": -6.2088,
+        "longitude": 106.8456
+      },
+
+      "updated_at": "2026-06-09T09:00:00Z"
+    }
+  ],
+
+  "installed_apps": [
+    {
+      "id": "app_001",
+      "device_id": "device_001",
+
+      "package_name": "com.google.android.apps.youtube.kids",
+
+      "name": "YouTube Kids",
+
+      "category": "education"
+    }
+  ],
+
+  "pairings": [
+    {
+      "id": "pair_001",
+
+      "code": "KIDO-1234",
+
+      "device_id": "device_001",
+
+      "expires_at": "2026-06-10T00:00:00Z"
+    }
+  ]
 }
